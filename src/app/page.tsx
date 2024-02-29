@@ -1,21 +1,18 @@
-import Books from "@/components/books";
 import CurrentlyReading from "@/components/currently-reading";
+import { Divider } from "@nextui-org/react";
+import { fetchBooksRead } from "@/db/quaries/books";
 
-export default function Home() {
+export default async function Home() {
+  const booksRead = await fetchBooksRead();
+
   return (
-    <div className="container m-4">
-      <h1 className="text-xl font-bold">Home</h1>
+    <div className="container">
       <div>
-        <h2 className="font-semibold text-lg">Currently Reading</h2>
-        <div>
-          <CurrentlyReading />
-        </div>
-      </div>
-      <div>
-        <h2 className="text-lg font-semibold">Other Books You Added</h2>
-        <div>
-          <Books />
-        </div>
+        {booksRead.length > 0 ? (
+          <div>You have read {booksRead.length} book</div>
+        ) : null}
+        <Divider />
+        <CurrentlyReading />
       </div>
     </div>
   );

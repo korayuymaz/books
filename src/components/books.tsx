@@ -1,17 +1,12 @@
 import { db } from "@/db";
+import BookCard from "./book-card";
 
 export default async function Books() {
   const books = await db.book.findMany();
 
   const renderedBooks = books.map((book) => {
-    return (
-      <div key={book.id}>
-        <div>{book.name}</div>
-        <div>{book.author}</div>
-        <div>{book.state}</div>
-      </div>
-    );
+    return <BookCard book={book} />;
   });
 
-  return <div className="flex flex-row flex-wrap gap-2">{renderedBooks}</div>;
+  return <div className="w-full">{renderedBooks}</div>;
 }

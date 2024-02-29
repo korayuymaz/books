@@ -1,5 +1,16 @@
-// import { db } from "@/db";
+import BookCard from "./book-card";
+import { fetchBooksCurrentlyReading } from "@/db/quaries/books";
 
 export default async function CurrentlyReading() {
-  return <div>Currently Reading</div>;
+  const books = await fetchBooksCurrentlyReading();
+
+  const renderedBooks = books.map((book) => {
+    return (
+      <div key={book.id}>
+        <BookCard book={book} />
+      </div>
+    );
+  });
+
+  return <div>{renderedBooks}</div>;
 }
