@@ -7,6 +7,7 @@ interface Book {
     name: string;
     author: string;
     state: string;
+    imageUrl: string;
   };
 }
 
@@ -16,7 +17,7 @@ export default function BookCard({ book }: Book) {
       <Image
         width={95}
         alt="Placeholder for Book Covers"
-        src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1422638843i/194746.jpg"
+        src={book.imageUrl}
         loading="lazy"
       />
       <div className="flex justify-between w-full">

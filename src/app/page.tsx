@@ -9,7 +9,10 @@ export default async function Home() {
     <div className="container">
       <div>
         {booksRead.length > 0 ? (
-          <div>You have read {booksRead.length} book</div>
+          <div>
+            You have read <span className="font-bold">{booksRead.length}</span>{" "}
+            book
+          </div>
         ) : null}
         <Divider />
         <CurrentlyReading />
