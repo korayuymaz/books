@@ -6,6 +6,7 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/react";
+import AddBook from "@/components/add-book";
 
 export default function Header() {
   return (
@@ -19,9 +20,7 @@ export default function Header() {
         <Link href="/my-books" className="font-semibold text-zinc-600">
           My Books
         </Link>
-        <Link href="/add-book" className="font-semibold text-zinc-600">
-          Add Book
-        </Link>
+        <AddBook />
       </NavbarContent>
     </Navbar>
   );
