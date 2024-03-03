@@ -1,13 +1,19 @@
 "use client";
 
 import { Select, SelectItem } from "@nextui-org/react";
+import * as actions from "@/actions/update-book-state";
+import { ChangeEvent } from "react";
 
 interface State {
+  id: number;
   currentState: string;
 }
 
-export default function BookState({ currentState }: State) {
-  const changeState = () => {};
+export default function BookState({ currentState, id }: State) {
+  const changeState = (event: ChangeEvent<HTMLSelectElement>) => {
+    let state = event.target.value.toString();
+    actions.updateBookState({ id, state });
+  };
 
   const bookState = [
     {
@@ -35,7 +41,7 @@ export default function BookState({ currentState }: State) {
         defaultSelectedKeys={[currentState]}
         className="w-40"
         variant="underlined"
-        onChange={changeState}
+        onChange={(event) => changeState(event)}
       >
         {bookState.map((state) => (
           <SelectItem key={state.value} value={state.value}>

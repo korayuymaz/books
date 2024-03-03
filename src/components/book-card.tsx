@@ -26,7 +26,7 @@ export default function BookCard({ book }: Book) {
           <div>by {book.author}</div>
         </div>
         <div>
-          <BookState currentState={book.state} />
+          <BookState currentState={book.state} id={book.id} />
         </div>
       </div>
     </div>
