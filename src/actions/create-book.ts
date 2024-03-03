@@ -52,10 +52,10 @@ export async function createBook(
         imageUrl: result.data.imageUrl,
       },
     });
-  } catch (error: unknown) {
-    if (error instanceof Error) {
+  } catch (err: unknown) {
+    if (err instanceof Error) {
       return {
-        errors: { _form: [error.message] },
+        errors: { _form: [err.message] },
       };
     } else {
       return {

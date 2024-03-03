@@ -8,12 +8,14 @@ import {
   Button,
 } from "@nextui-org/react";
 
+import FormButton from "./common/form-button";
+
 import { useFormState } from "react-dom";
 
 import * as actions from "@/actions/create-book";
 
 export default function AddBook() {
-  const [formState, action] = useFormState(actions.createBook, {
+  const [state, action] = useFormState(actions.createBook, {
     errors: {},
   });
   return (
@@ -28,36 +30,36 @@ export default function AddBook() {
               name="name"
               label="Book Name"
               labelPlacement="outside"
-              isInvalid={!!formState.errors.name}
-              errorMessage={formState.errors.name?.join(", ")}
+              isInvalid={!!state.errors.name}
+              errorMessage={state.errors.name?.join(", ")}
             />
             <Input
               name="author"
               label="Author"
               labelPlacement="outside"
-              isInvalid={!!formState.errors.author}
-              errorMessage={formState.errors.author?.join(", ")}
+              isInvalid={!!state.errors.author}
+              errorMessage={state.errors.author?.join(", ")}
             />
             <Input
               name="imageUrl"
               label="Cover Art Url"
               labelPlacement="outside"
-              isInvalid={!!formState.errors.imageUrl}
-              errorMessage={formState.errors.imageUrl?.join(", ")}
+              isInvalid={!!state.errors.imageUrl}
+              errorMessage={state.errors.imageUrl?.join(", ")}
             />
             <Input
               name="state"
               label="State"
               labelPlacement="outside"
-              isInvalid={!!formState.errors.state}
-              errorMessage={formState.errors.state?.join(", ")}
+              isInvalid={!!state.errors.state}
+              errorMessage={state.errors.state?.join(", ")}
             />
-            {formState.errors._form ? (
+            {state.errors._form ? (
               <div className="p-2 bg-red-200 border border-red-400 rounded">
-                {formState.errors._form?.join(", ")}
+                {state.errors._form?.join(", ")}
               </div>
             ) : null}
-            <Button type="submit">Submit</Button>
+            <FormButton>Save</FormButton>
           </div>
         </form>
       </PopoverContent>
