@@ -1,5 +1,6 @@
 import { Image } from "@nextui-org/react";
 import BookState from "./book-state";
+import FormDeleteButton from "./common/delete-button";
 
 interface Book {
   book: {
@@ -25,8 +26,9 @@ export default function BookCard({ book }: Book) {
           <div className="font-bold">{book.name}</div>
           <div>by {book.author}</div>
         </div>
-        <div>
+        <div className="flex gap-4 justify-center items-center">
           <BookState currentState={book.state} id={book.id} />
+          <FormDeleteButton id={book.id} />
         </div>
       </div>
     </div>

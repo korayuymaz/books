@@ -15,7 +15,7 @@ const createBookSchema = z.object({
 });
 
 interface CreateBookFormState {
-  errors: {
+  errors?: {
     name?: string[];
     author?: string[];
     imageUrl?: string[];
@@ -28,6 +28,7 @@ export async function createBook(
   formState: CreateBookFormState,
   formData: FormData
 ): Promise<CreateBookFormState> {
+  console.log(formData);
   const result = createBookSchema.safeParse({
     name: formData.get("name"),
     author: formData.get("author"),
@@ -36,6 +37,7 @@ export async function createBook(
   });
 
   if (!result.success) {
+    console.log(result.error);
     return {
       errors: result.error.flatten().fieldErrors,
     };
@@ -64,6 +66,6 @@ export async function createBook(
     }
   }
 
-  revalidatePath("/");
-  redirect(paths.home());
+  revalidatePath("/my-books");
+  redirect(paths.bookShow());
 }

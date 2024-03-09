@@ -16,7 +16,13 @@ import * as actions from "@/actions/create-book";
 
 export default function AddBook() {
   const [state, action] = useFormState(actions.createBook, {
-    errors: {},
+    errors: {
+      name: undefined,
+      author: undefined,
+      imageUrl: undefined,
+      state: undefined,
+      _form: undefined,
+    },
   });
   return (
     <Popover placement="left">
@@ -30,31 +36,31 @@ export default function AddBook() {
               name="name"
               label="Book Name"
               labelPlacement="outside"
-              isInvalid={!!state.errors.name}
-              errorMessage={state.errors.name?.join(", ")}
+              isInvalid={!!state?.errors?.name}
+              errorMessage={state?.errors?.name?.join(", ")}
             />
             <Input
               name="author"
               label="Author"
               labelPlacement="outside"
-              isInvalid={!!state.errors.author}
-              errorMessage={state.errors.author?.join(", ")}
+              isInvalid={!!state?.errors?.author}
+              errorMessage={state?.errors?.author?.join(", ")}
             />
             <Input
               name="imageUrl"
               label="Cover Art Url"
               labelPlacement="outside"
-              isInvalid={!!state.errors.imageUrl}
-              errorMessage={state.errors.imageUrl?.join(", ")}
+              isInvalid={!!state?.errors?.imageUrl}
+              errorMessage={state?.errors?.imageUrl?.join(", ")}
             />
             <Input
               name="state"
               label="State"
               labelPlacement="outside"
-              isInvalid={!!state.errors.state}
-              errorMessage={state.errors.state?.join(", ")}
+              isInvalid={!!state?.errors?.state}
+              errorMessage={state?.errors?.state?.join(", ")}
             />
-            {state.errors._form ? (
+            {state?.errors?._form ? (
               <div className="p-2 bg-red-200 border border-red-400 rounded">
                 {state.errors._form?.join(", ")}
               </div>

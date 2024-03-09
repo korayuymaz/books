@@ -40,7 +40,7 @@ export default function BookState({ currentState, id }: State) {
         aria-label={currentState}
         defaultSelectedKeys={[currentState]}
         className="w-40"
-        variant="underlined"
+        variant="flat"
         onChange={(event) => changeState(event)}
       >
         {bookState.map((state) => (
