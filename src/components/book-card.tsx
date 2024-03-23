@@ -20,6 +20,7 @@ export default function BookCard({ book }: Book) {
         alt="Placeholder for Book Covers"
         src={book.imageUrl}
         loading="lazy"
+        className="border rounded"
       />
       <div className="flex justify-between w-full">
         <div>
